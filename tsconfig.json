@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "rootDir": "src",
+    "declaration": true,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": [
+      "ES2017"
+    ],
+    "target": "ES2017"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "*.js"
+  ]
+}
