@@ -1,7 +1,7 @@
 # tscmd
 
 [![][ci-badge]][ci-link] [![][version-badge]][version-link]
-[![][license-badge]][license-link] [![][types-badge]][types-link]
+[![][license-badge]][license-link]
 
 [ci-badge]: https://github.com/clebert/tscmd/workflows/CI/badge.svg
 [ci-link]: https://github.com/clebert/tscmd
@@ -9,8 +9,6 @@
 [version-link]: https://www.npmjs.com/package/@clebert/tscmd
 [license-badge]: https://badgen.net/npm/license/@clebert/tscmd
 [license-link]: https://github.com/clebert/tscmd/blob/master/LICENSE.md
-[types-badge]: https://badgen.net/npm/types/@clebert/tscmd
-[types-link]: https://github.com/clebert/tscmd
 
 The TypeScript command.
 
