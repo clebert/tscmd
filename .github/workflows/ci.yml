@@ -1,5 +1,11 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
 
 jobs:
   ci:
@@ -22,3 +28,11 @@ jobs:
 
       - name: Run CI checks
         run: npm run ci
+
+      - name: Publish to npm
+        if: ${{ github.event.release.action == 'published' }}
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
+          npm publish

@@ -18,17 +18,19 @@
     "lib"
   ],
   "scripts": {
-    "preci": "run-s compile setup",
-    "ci": "run-p fmt:check lint test",
-    "compile": "tsc --project tsconfig.cjs.json --incremental --pretty",
+    "bootstrap": "tscmd setup --arch node --dist package",
+    "postbootstrap": "tscmd compile --output cjs",
+    "preci": "run-s bootstrap setup",
+    "ci": "run-p compile fmt:check lint test",
+    "compile": "node lib/cjs/bin.js compile --output cjs",
     "postcompile": "chmod +x lib/cjs/bin.js",
-    "fmt": "./lib/cjs/bin.js fmt",
-    "fmt:check": "./lib/cjs/bin.js fmt --check",
-    "lint": "./lib/cjs/bin.js lint",
+    "fmt": "node lib/cjs/bin.js fmt",
+    "fmt:check": "node lib/cjs/bin.js fmt --check",
+    "lint": "node lib/cjs/bin.js lint",
     "release": "npm version",
     "postrelease": "git push --follow-tags",
-    "setup": "./lib/cjs/bin.js setup --arch node --dist package",
-    "test": "./lib/cjs/bin.js test --coverage --passWithNoTests"
+    "setup": "node lib/cjs/bin.js setup --arch node --dist package",
+    "test": "node lib/cjs/bin.js test --coverage --passWithNoTests"
   },
   "dependencies": {
     "@babel/core": "^7.15.0",
@@ -48,6 +50,7 @@
     "yargs": "^17.1.1"
   },
   "devDependencies": {
+    "@clebert/tscmd": "^0.1.0",
     "@types/compose-function": "^0.0.30",
     "@types/mkdirp": "^1.0.2",
     "@types/yargs": "^17.0.2",
