@@ -30,7 +30,7 @@ jobs:
         run: npm run ci
 
       - name: Publish to npm
-        if: ${{ github.event.release.action == 'published' }}
+        if: ${{ github.event_name == 'release' }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
