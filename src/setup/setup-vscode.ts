@@ -1,6 +1,6 @@
 import {FileManager} from '../file-manager';
 
-export function setupVscode(fileManager: FileManager): void {
+export function setupVscode(fileManager: FileManager, debug: boolean): void {
   fileManager.registerTextFile('.editorconfig', () => [
     'root = true',
     '',
@@ -32,12 +32,12 @@ export function setupVscode(fileManager: FileManager): void {
       'eslint.options': {ignorePattern: 'lib'},
       'files.exclude': {
         ...nonVersionedPaths.reduce((exclude, path) => {
-          exclude[path] = true;
+          exclude[path] = !debug;
 
           return exclude;
         }, {} as Record<string, boolean>),
 
-        '.vscode': true,
+        '.vscode': !debug,
         '**/.DS_Store': true,
         '**/.git': true,
       },

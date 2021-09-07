@@ -12,6 +12,7 @@ interface SetupArgs {
   readonly _: ['setup'];
   readonly arch: Arch;
   readonly dist: Dist;
+  readonly debug: boolean;
 }
 
 function isSetupArgs(args: {readonly _: unknown[]}): args is SetupArgs {
@@ -24,7 +25,7 @@ export function setup(args: {readonly _: unknown[]}): void {
   }
 
   const fileManager = new FileManager();
-  const {arch, dist} = args;
+  const {arch, dist, debug} = args;
 
   setupEslint(fileManager);
   setupGit(fileManager);
@@ -32,7 +33,7 @@ export function setup(args: {readonly _: unknown[]}): void {
   setupNpm(fileManager);
   setupPrettier(fileManager);
   setupTypescript(fileManager, arch, dist);
-  setupVscode(fileManager);
+  setupVscode(fileManager, debug);
 
   fileManager.generateFiles();
 }
@@ -47,6 +48,10 @@ setup.describe = (argv: Argv) =>
       .describe('dist', '')
       .choices('dist', ['bundle', 'package'])
       .demandOption('dist')
+
+      .describe('debug', '')
+      .boolean('debug')
+      .default('debug', false)
 
       .example('tscmd setup --arch node --dist package', '')
       .example('tscmd setup --arch preact --dist bundle', '')

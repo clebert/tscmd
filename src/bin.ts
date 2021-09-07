@@ -2,11 +2,11 @@
 
 import compose from 'compose-function';
 import yargs from 'yargs';
-import {compile} from './command/compile.js';
-import {fmt} from './command/fmt.js';
-import {lint} from './command/lint.js';
-import {setup} from './command/setup.js';
-import {test} from './command/test.js';
+import {compile} from './command/compile';
+import {fmt} from './command/fmt';
+import {lint} from './command/lint';
+import {setup} from './command/setup';
+import {test} from './command/test';
 
 const args = compose(
   test.describe,
